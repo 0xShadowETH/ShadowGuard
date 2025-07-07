@@ -1,0 +1,84 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(145deg, #0e1018, #1c1e29);
+  color: #ffffff;
+  margin: 0;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 24px;
+  color: #00aaff;
+  text-shadow: 0 0 8px rgba(0, 170, 255, 0.4);
+}
+
+p {
+  font-size: 14px;
+  color: #bbb;
+  margin-top: 4px;
+}
+
+.history-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.entry-card {
+  background: #1a1d2e;
+  border-left: 5px solid #00aaff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  animation: fadeInUp 0.4s ease forwards;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.entry-card.risky {
+  border-left-color: #ff4c4c;
+  box-shadow: 0 0 12px rgba(255, 76, 76, 0.4);
+}
+
+.entry-card:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 0 18px rgba(0, 170, 255, 0.3);
+}
+
+.method {
+  font-weight: bold;
+  font-size: 16px;
+  color: #00ffff;
+  margin-bottom: 6px;
+}
+
+.site, .timestamp {
+  font-size: 13px;
+  color: #ccc;
+  margin-top: 2px;
+}
+
+.params {
+  font-size: 13px;
+  background: #111;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 6px;
+  color: #ccc;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  border: 1px solid #222;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

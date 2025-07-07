@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🧾 ShadowGuard History</title>
+  <link rel="stylesheet" href="history.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(145deg, #0e1018, #1c1e29);
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .header {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 36px 0 18px 0;
+      text-align: center;
+    }
+    .logo {
+      font-size: 44px;
+      margin-bottom: 6px;
+      text-shadow: 0 0 12px #00aaff44;
+    }
+    .title {
+      font-size: 28px;
+      font-weight: 700;
+      color: #00aaff;
+      margin-bottom: 4px;
+      letter-spacing: 1px;
+    }
+    .subtitle {
+      font-size: 15px;
+      color: #b0eaff;
+      margin-bottom: 18px;
+    }
+    .history-container {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-bottom: 32px;
+      min-height: 120px;
+    }
+    .entry-card {
+      background: #181a24;
+      border-left: 6px solid #00aaff;
+      padding: 20px 18px 16px 18px;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0, 170, 255, 0.08), 0 1.5px 6px rgba(0,0,0,0.12);
+      transition: all 0.2s ease;
+      animation: fadeInUp 0.4s ease forwards;
+      opacity: 0;
+      transform: translateY(10px);
+      position: relative;
+    }
+    .entry-card.risky {
+      border-left-color: #ff4c4c;
+      box-shadow: 0 0 16px rgba(255, 76, 76, 0.18);
+    }
+    .entry-card .risk-badge {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      background: #ff4c4c;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 8px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 8px #ff4c4c33;
+    }
+    .entry-card .method {
+      font-weight: bold;
+      font-size: 17px;
+      color: #00ffff;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+    .entry-card .site {
+      font-size: 14px;
+      color: #b0eaff;
+      margin-top: 2px;
+      margin-bottom: 2px;
+    }
+    .entry-card .timestamp {
+      font-size: 13px;
+      color: #bbb;
+      margin-top: 2px;
+      margin-bottom: 8px;
+    }
+    .entry-card .params {
+      font-size: 13px;
+      background: #111;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+      color: #ccc;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+      border: 1px solid #222;
+    }
+    .empty-state {
+      text-align: center;
+      color: #b0eaff;
+      font-size: 16px;
+      margin-top: 40px;
+      opacity: 0.8;
+    }
+    .footer {
+      margin-top: auto;
+      padding: 18px 0 12px 0;
+      font-size: 13px;
+      color: #7ecfff;
+      text-align: center;
+      opacity: 0.7;
+      letter-spacing: 0.2px;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @media (max-width: 700px) {
+      .header, .history-container { max-width: 98vw; }
+    }
+    @media (max-width: 400px) {
+      .header { padding: 18px 0 8px 0; }
+      .title { font-size: 20px; }
+      .logo { font-size: 32px; }
+      .entry-card { padding: 12px 4px 10px 8px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">🛡️</div>
+    <div class="title">ShadowGuard Activity Log</div>
+    <div class="subtitle">Review all intercepted wallet method calls</div>
+  </div>
+  <div id="historyContainer" class="history-container"></div>
+  <div class="footer">
+    ShadowGuard v1.2 &copy; 2024<br>
+    Protecting your Web3 experience.
+  </div>
+  <script src="history.js"></script>
+</body>
+</html>

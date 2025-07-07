@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>⚠️ ShadowGuard Alert</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: #121212;
+      color: #fff;
+      padding: 20px;
+    }
+    .shield {
+      font-size: 48px;
+      color: #00aaff;
+      text-align: center;
+    }
+    .title {
+      text-align: center;
+      font-size: 22px;
+      margin-top: 10px;
+      color: #00aaff;
+    }
+    .section {
+      margin-top: 15px;
+      background: #1e1e1e;
+      padding: 12px;
+      border-radius: 8px;
+    }
+    .section pre {
+      font-size: 14px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .warning {
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #332800;
+      color: #ffa500;
+      border-left: 5px solid #ffa500;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="shield">🛡️</div>
+  <div class="title">Suspicious Wallet Call</div>
+
+  <div class="section"><b>Method:</b> <span id="method"></span></div>
+  <div class="section"><b>Site:</b> <span id="origin"></span></div>
+  <div class="section"><b>Time:</b> <span id="timestamp"></span></div>
+  <div class="section"><b>Risk:</b> <span id="risk_level"></span></div>
+  <div class="section"><b>Why this is risky:</b><br><span id="risk_message"></span></div>
+  <div class="section" id="amountSection" style="display:none;"><b>Amount:</b> <span id="amount"></span></div>
+  <div class="section" id="recipientSection" style="display:none;"><b>Recipient:</b> <span id="recipient"></span></div>
+  <div class="section"><b>Params:</b><br><pre id="params"></pre></div>
+
+  <div class="warning"><b>⚠️ Think before you sign. ShadowGuard has intercepted this call to keep your wallet safe.</b></div>
+
+  <script src="alert.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f111a" />
+  <meta name="description" content="ShadowGuard - Detect and block suspicious Web3 wallet activity in real time." />
+  <title>🛡 ShadowGuard</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(145deg, #0f111a, #1c1e29);
+      color: #ffffff;
+      min-width: 340px;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .card {
+      background: #181a24;
+      border-radius: 16px;
+      box-shadow: 0 6px 24px rgba(0, 170, 255, 0.08), 0 1.5px 6px rgba(0,0,0,0.12);
+      padding: 32px 24px 24px 24px;
+      margin-top: 32px;
+      width: 90%;
+      max-width: 350px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .logo {
+      font-size: 48px;
+      margin-bottom: 8px;
+      text-shadow: 0 0 12px #00aaff44;
+    }
+    .title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #00aaff;
+      margin-bottom: 4px;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+    .subtitle {
+      font-size: 15px;
+      color: #b0eaff;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+    .status {
+      display: flex;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+    .status-dot {
+      width: 12px;
+      height: 12px;
+      background: #00ff99;
+      border-radius: 50%;
+      margin-right: 8px;
+      box-shadow: 0 0 8px #00ff99aa;
+    }
+    .status-text {
+      font-size: 14px;
+      color: #00ff99;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    .desc {
+      font-size: 14px;
+      color: #d0d0d0;
+      margin-bottom: 22px;
+      text-align: center;
+      line-height: 1.6;
+    }
+    .button {
+      display: block;
+      width: 100%;
+      padding: 14px 0;
+      background: linear-gradient(145deg, #007bff, #0056d2);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      box-shadow: 0 4px 12px rgba(0, 123, 255, 0.18);
+      margin-bottom: 8px;
+    }
+    .button:hover {
+      background: linear-gradient(145deg, #008cff, #0062e6);
+      transform: scale(1.03);
+    }
+    .footer {
+      margin-top: 32px;
+      font-size: 12px;
+      color: #7ecfff;
+      text-align: center;
+      opacity: 0.7;
+      letter-spacing: 0.2px;
+    }
+    @media (max-width: 400px) {
+      .card { padding: 18px 4px 18px 4px; }
+      .title { font-size: 20px; }
+      .logo { font-size: 36px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">🛡️</div>
+    <div class="title">ShadowGuard</div>
+    <div class="subtitle">Web3 Wallet Protection</div>
+    <div class="status">
+      <div class="status-dot"></div>
+      <div class="status-text">Monitoring: Active</div>
+    </div>
+    <div class="desc">
+      ShadowGuard is actively monitoring this site for risky wallet actions.<br>
+      <b>Only dangerous or suspicious transactions will trigger an alert.</b><br>
+      <br>
+      <span style="color:#00ff99;">Your wallet is protected in real time.</span>
+    </div>
+    <button class="button" id="viewHistory">View Activity History</button>
+  </div>
+  <div class="footer">
+    ShadowGuard v1.2 &copy; 2024<br>
+    Protecting your Web3 experience.
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

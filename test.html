@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShadowGuard Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .dangerous {
+            background: #dc3545;
+        }
+        .dangerous:hover {
+            background: #c82333;
+        }
+        pre {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🛡️ ShadowGuard Extension Test Page</h1>
+    
+    <div class="test-section">
+        <h2>Test Wallet Interactions</h2>
+        <p>Click the buttons below to test different wallet interactions. The ShadowGuard extension should intercept these calls and show alerts for risky ones.</p>
+        
+        <button onclick="testEthSendTransaction()">Test eth_sendTransaction (Risky)</button>
+        <button onclick="testPersonalSign()">Test personal_sign (Medium Risk)</button>
+        <button onclick="testEthSign()">Test eth_sign (High Risk)</button>
+        <button onclick="testEthAccounts()">Test eth_accounts (Safe)</button>
+        <button onclick="testChainId()">Test eth_chainId (Safe)</button>
+    </div>
+
+    <div class="test-section">
+        <h2>Console Output</h2>
+        <p>Check the browser console (F12) to see detailed logs from the extension.</p>
+        <pre id="console-output">Console output will appear here...</pre>
+    </div>
+
+    <script>
+        // Mock ethereum provider for testing
+        window.ethereum = {
+            isMetaMask: true,
+            request: async function(args) {
+                console.log('🛡️ Mock ethereum.request called:', args);
+                
+                // Simulate different responses based on method
+                switch(args.method) {
+                    case 'eth_accounts':
+                        return ['0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6'];
+                    case 'eth_chainId':
+                        return '0x1';
+                    case 'eth_sendTransaction':
+                        console.log('🛡️ Transaction would be sent:', args.params[0]);
+                        return '0x1234567890abcdef';
+                    case 'personal_sign':
+                        console.log('🛡️ Message would be signed:', args.params[0]);
+                        return '0x1234567890abcdef';
+                    case 'eth_sign':
+                        console.log('🛡️ Data would be signed:', args.params[0]);
+                        return '0x1234567890abcdef';
+                    default:
+                        return null;
+                }
+            }
+        };
+
+        function testEthSendTransaction() {
+            console.log('🛡️ Testing eth_sendTransaction...');
+            window.ethereum.request({
+                method: 'eth_sendTransaction',
+                params: [{
+                    to: '0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6',
+                    value: '0x2386f26fc10000', // 0.01 ETH
+                    data: '0x'
+                }]
+            });
+        }
+
+        function testPersonalSign() {
+            console.log('🛡️ Testing personal_sign...');
+            window.ethereum.request({
+                method: 'personal_sign',
+                params: ['Hello, this is a test message to sign', '0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6']
+            });
+        }
+
+        function testEthSign() {
+            console.log('🛡️ Testing eth_sign...');
+            window.ethereum.request({
+                method: 'eth_sign',
+                params: ['0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6', '0x1234567890abcdef']
+            });
+        }
+
+        function testEthAccounts() {
+            console.log('🛡️ Testing eth_accounts...');
+            window.ethereum.request({
+                method: 'eth_accounts',
+                params: []
+            });
+        }
+
+        function testChainId() {
+            console.log('🛡️ Testing eth_chainId...');
+            window.ethereum.request({
+                method: 'eth_chainId',
+                params: []
+            });
+        }
+
+        // Capture console logs for display
+        const originalLog = console.log;
+        const originalError = console.error;
+        const consoleOutput = document.getElementById('console-output');
+
+        function updateConsoleOutput(message) {
+            consoleOutput.textContent += message + '\n';
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        }
+
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            updateConsoleOutput('LOG: ' + args.join(' '));
+        };
+
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            updateConsoleOutput('ERROR: ' + args.join(' '));
+        };
+
+        console.log('🛡️ Test page loaded. ShadowGuard extension should be active.');
+    </script>
+</body>
+</html> 
