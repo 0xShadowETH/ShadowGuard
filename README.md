@@ -24,7 +24,7 @@ ShadowGuard is a browser extension that protects your wallet from malicious, sus
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/0xshadow/shadowguard.git
+git clone https://github.com/0xShadowETH/ShadowGuard.git
 ```
 
 Or [download as ZIP](https://github.com/0xshadow/shadowguard/archive/refs/heads/main.zip) and extract it.
@@ -74,7 +74,7 @@ No more blind signing.
 
 ## 🗣️ Community
 
-Join our Telegram for updates: [t.me/oxshadow](https://t.me/ZeroXShhadowETH)
+Join our Telegram for updates: [Telegram](https://t.me/ZeroXShhadowETH)
 
 ---
 
